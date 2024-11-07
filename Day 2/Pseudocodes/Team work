@@ -1,0 +1,66 @@
+1.To find the square:-
+
+pseudofunction:
+
+findSquare(number -> int) -> int
+	return number * number
+
+findSquareTest() 
+	input number
+	square = findSquare(number)
+	print square
+
+pseudocode:
+
+findSquareTest()
+2.To swap two numbers:-
+
+pseudofunction:
+function swapNums(&number1,&number2)
+	temp = number1
+	number1 = number2
+	number2 = temp
+	
+function swapNumsTest()
+	input number1,number2
+	swapNums(number1,number2)
+	print number1,number2
+
+pseudocode:
+swapNumsTest()
+
+3.To check whether a number is armstrong or not
+pseudo function:
+
+function isArmstrong(number -> int) -> bool
+	copyNumber = number
+	int counter = 0
+	while copyNumber > 0
+		copyNumber = copyNumber/10
+		counter = counter + 1
+	end while
+	copyNumber = number
+	int sum = 0
+	while copyNumber > 0
+		temp = copyNumber % 10
+		sum = sum + temp^counter
+		copyNumber = copyNumber / 10
+	end while
+	if sum == number
+		return true
+	return false
+
+function isArmstrongTest(){
+	input number
+	bool result = isArmStrong(number)
+	if result == true
+		print "Armstrong"
+	else
+		print "Not Armstrong"
+	end if
+}
+
+pseudocode:
+
+isArmStrongTest()
+		
