@@ -1,0 +1,11 @@
+START
+  INPUT year
+  IF year is divisible by 400
+      OUTPUT "Leap year"
+  ELSE IF year is divisible by 100
+      OUTPUT "Not a leap year"
+  ELSE IF year is divisible by 4
+      OUTPUT "Leap year"
+  ELSE
+      OUTPUT "Not a leap year"
+END
