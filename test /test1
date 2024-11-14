@@ -1,0 +1,315 @@
+ 1.Program for reversing a string without using any built in functions.
+
+[pseudo code and c++ code]
+pseudocode:
+
+pseudofunction:
+function reverseString(inputText -> string) -> string
+    int length = inputText.length()
+    string reversed = ""
+    
+    for (int i = 0; i < length; i++)
+        reversed = inputText[i] + reversed
+    end for
+
+    return reversed
+end function
+
+function reverseStringTest() -> void
+    string text
+    print "enter a string to reverse: "
+    input >> text
+    
+    string result = reverseString(text)
+    print "The reversed string is: " + result
+end function
+pseudocode:
+reverseStringTest()
+
+cpp code:
+
+#include <iostream>
+using namespace std;
+
+string reverseString(string text) 
+{
+    int len = text.length();
+    string reversed = "";
+    
+    for (int i = 0; i < len; i++) {
+        reversed = text[i] + reversed;
+ }
+    
+    return reversed;
+}
+
+void reverseStringTest()
+{
+    string text;
+    
+    cout << "Enter a string to reverse: "<<endl;
+    cin >> text;
+    
+    string reversedText = reverseString(text);
+    
+    cout << "The reversed string is: " << reversedText ;
+}
+
+int main()
+{
+    reverseStringTest();
+    return 0;
+}
+
+
+2. 1. Write a program to read 10 numbers from the user, find their sum. [with array]
+2. Write a program to read 10 numbers from the user, find their sum [without using array]
+
+[pseudo code and c++ code]
+1.With Array:
+
+pseudocode function:
+function calculateSumOfArray( numbers[] -> int) -> int
+    int totalSum = 0
+    for (int i = 0; i < 10; i++)
+        totalSum = totalSum + numbers[i]
+    end for
+    return totalSum
+end function
+
+function calculateSumTest() -> void
+    int numbers[10]
+    print "Please enter 10 numbers:"
+    
+    for (int i = 0; i < 10; i++)
+        input numbers[i]
+    end for
+    
+    print "The total sum is: " + calculateSumOfArray(numbers)
+end function
+
+pseudocode:
+calculateSumTest()
+
+
+CPP CODE:
+
+#include <iostream>
+using namespace std;
+
+int calculateSumOfArray(int numbers[ ]) 
+{
+    int totalSum = 0;
+    for (int i = 0; i < 10; i++)
+    {
+        totalSum = totalSum+ numbers[i];
+    }
+    return totalSum;
+}
+
+void calculateSumTest()
+{
+    int numbers[10];
+    cout << "Please enter 10 numbers:" << endl;
+
+    for (int i = 0; i < 10; i++)
+    {
+        cin >> numbers[i];
+    }
+
+    cout << "The total sum is: " << calculateSumOfArray(numbers) << endl;
+}
+
+int main()
+{
+
+    calculateSumTest();
+    return 0;
+}
+
+2.WITHOUT ARRAY:
+
+function calculateSumOfTenNumbers() -> int
+    int sum = 0
+    for (int i = 0; i < 10; i++)
+        print "Enter a number:"
+        input number
+        sum = sum + number
+    end for
+    return sum
+end function
+
+function calculateSumTest() -> void
+    int totalSum
+    totalSum = calculateSumOfTenNumbers()
+    print "The total sum is: " + totalSum
+end function
+
+pseudocode:
+
+calculateSumTest()
+
+CPP CODE:
+
+#include <iostream>
+using namespace std;
+
+int calculateSumOfTenNumbers() 
+{
+    int sum = 0, number;
+    for (int i = 0; i < 10; i++) 
+    {
+        cout << "Enter a number: ";
+        cin >> number;
+        sum = sum + number;
+    }
+    return sum;
+}
+
+void calculateSumTest() 
+{
+    int totalSum = calculateSumOfTenNumbers();
+    cout << "The total sum is: " << totalSum << endl;
+}
+
+int main() 
+{
+    calculateSumTest();
+    return 0;
+}
+
+3. Write a program to find the highest number from 10 numbers.
+(user should input numbers)
+The highest number should be returned from a function.
+
+Write pseudocode and c++ code. And test with different test cases.
+pseudofunction:
+
+function findHighestInArray( number[] -> int , size -> int) -> int
+    int max = number[0]
+    for (int i = 1; i < size; i++)
+        if(number[i] > max)
+            max = number[i]
+    end for
+    return max
+end function
+
+function findHighestTest() -> void
+    int number[10]
+    print "enter 10 numbers: "
+    
+    for (int i = 0; i < 10; i++)
+        cin >> number[i]
+    end for
+    
+    print "The highest number is: " + findHighestInArray(number, 10)
+end function
+pseudocode:
+findHighestTest()
+
+CPP CODE:
+
+#include <iostream>
+using namespace std;
+
+int findHighestInArray(int number[], int size) 
+{
+    int max = number[0];
+    for (int i = 1; i < size; i++)
+    {
+        if (number[i] > max) 
+        {
+            max = number[i];
+        }
+    }
+    return max;
+}
+
+void findHighestTest() 
+{
+    int number[10];
+    
+    cout << "Please enter 10 numbers: ";
+    for (int i = 0; i < 10; i++) 
+    {
+        cin >> number[i];
+    }
+    
+    cout << "The highest number is: " << findHighestInArray(number, 10) << endl;
+}
+
+int main() 
+{
+    findHighestTest();
+    return 0;
+}
+4.Write a program that continuously prompts the user to enter a number. The program should add the entered number to the previous valid number if it is divisible by 3 or 5 and display the sum. If the number is not divisible by 3 or 5, display a message indicating this. The program should terminate when the user types any particular character. Additionally, handle invalid input by prompting the user to enter a valid number.
+
+[both pseudo code and C++ code]
+pseudofunction:
+
+function checkDivisibleByThreeOrFive(number -> int) -> bool
+       if (number % 3 == 0 OR number % 5 == 0)
+           return true
+      return false
+end function
+
+function checkDivisibleByThreeorFiveTest() -> void
+   int sum = 0
+   while (true)
+         print "Please input a number: "
+         
+         int number
+         if (not valid input)
+            print "Invalid input"
+         endif
+        if (checkIfDivisibleByThreeOrFive(number))
+            sum = sum + number
+            print "The current sum is: + sum
+       else
+           print " Number is not divisible by 3 or 5"  
+      endif
+end function
+pseudocode:
+checkDivisibleByThreeOrFiveTest()
+
+
+CPP CODE:
+#include <iostream>
+using namespace std;
+
+bool checkIfDivisibleByThreeOrFive(int number)
+{
+    if (number % 3 == 0 || number % 5 ==0)
+    {
+      return true;
+    }
+    return false;
+}
+
+void checkDivisibleByThreeOrFiveTest()
+{
+  int sum =0;
+  while (true)
+  {
+     cout << "Please input a number: ";
+      int number;
+      if (cin >> number)
+       {
+         cout << "invalid input " << endl;
+       }
+      if (checkDivisiblebythreeorfive(number))
+      {
+        sum = sum+number;
+        cout << "the current sum is : " << sum << endl;
+      }
+     else
+     {
+       cout << "number is not divisble by 3 or 5";
+     }
+  
+}
+int main()
+    checkdivisiblebyThreeorFiveTest();
+    return 0;
+}
