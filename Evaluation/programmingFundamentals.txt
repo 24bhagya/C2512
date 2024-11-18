@@ -2101,6 +2101,8 @@
 
         function testFunction()
 
+            int ages[MAX_SIZE]                                                     
+            size = readAges(ages)                                                 
             primeAgeSum = findSumOfPrime(ages, size) 
             teenSum = findSumOfTeenage(ages, size)
             minimumAge = findMinAge(ages, size)
@@ -2112,6 +2114,7 @@
             print teenSum
             print minimumAge
             print oddAgeSum
+            print secondMaxAdultAge                                           
             if(isPrime(minimumAge))
                 print("minimum age is prime")
             else
