@@ -1,6 +1,4 @@
-#ab{
-    background-color: blue;
-}
+
 body{
     font-family: Verdana;
     table  thead tr th{
@@ -26,6 +24,4 @@ label{
 input{
     padding: 5px;
 }
-.bc{
-    background-color: red;
-}
+
