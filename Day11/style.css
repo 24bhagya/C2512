@@ -1,0 +1,31 @@
+#ab{
+    background-color: blue;
+}
+body{
+    font-family: Verdana;
+    table  thead tr th{
+        background-color: rgb(57, 232, 57);
+    }
+}
+a{
+    margin: 20px;
+}
+form div{
+margin: 10px;
+}
+button{
+    
+    padding: 10px;
+}
+label{
+    
+    display: inline-block;
+    width: 100px;
+}
+
+input{
+    padding: 5px;
+}
+.bc{
+    background-color: red;
+}
