@@ -5,7 +5,7 @@
 
 2. `Navigate to the project directory`:
    - Change into the `cpp_programs` directory using the `cd` command.
-      -- cd cpp_programs
+      -- cd cpp_program
 
 3. `Create a new C++ program file using `vi``:
    - Open `vi` and create a new file named `hello_world.cpp`.
@@ -27,7 +27,7 @@
    ```
 
 5. `Save and exit the `vi` editor`:
-   - Save the program and exit `vi` using `:wq`.
+   - Saved the program and exit `vi` using `:wq`.
 
 6. `Compile the C++ program`:
    - Use the `g++` compiler to compile the program 
@@ -62,3 +62,11 @@ output:Hello,Bhagya!
 11. `Remove the project directory`:
     - Check if the directory is empty and remove it.
 -- rmdir cpp_programs
+
+Conclusion:
+I explored a range of Linux commands
+and utilized the vi/vim editor
+to efficiently manage files, directories, and processes.
+
+Additionally, I customized the vim editor
+to align with my development requirements.
