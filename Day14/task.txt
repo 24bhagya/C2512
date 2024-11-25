@@ -1,0 +1,62 @@
+`Tasks`:
+
+1. `Create a C++ project directory`:
+   - Created a directory called `cpp_programs` using  mkdir cpp_programs command.
+
+2. `Navigate to the project directory`:
+   - Change into the `cpp_programs` directory using the `cd` command.
+      -- cd cpp_programs
+
+3. `Create a new C++ program file using `vi``:
+   - Open `vi` and create a new file named `hello_world.cpp`.
+   -- vim hello_world.cpp
+
+4. `Write a simple C++ program`:
+   - In `vi`, write a basic C++ program 
+   that outputs "Hello, World!" to the console.
+
+
+   ```cpp
+   #include <iostream>
+   using namespace std;
+
+   int main() {
+       cout << "Hello, World!" << endl;
+       return 0;
+   }
+   ```
+
+5. `Save and exit the `vi` editor`:
+   - Save the program and exit `vi` using `:wq`.
+
+6. `Compile the C++ program`:
+   - Use the `g++` compiler to compile the program 
+   into an executable called `hello_world`.
+-- g++ hello_world.cpp
+
+7. `Run the compiled program`:
+   - Run the `hello_world` executable and confirm 
+   that it prints "Hello, World!" to the console.
+--./a.out
+
+8. `Edit the program`:
+   - Reopen the file using `vi` and modify the program 
+   to ask the user for their name and 
+   print a personalized greeting. 
+   Save and exit the file again.
+--vim hello_world.cpp
+
+9. `Compile and run the modified program`:
+   - Recompile the program and run it to test if it asks 
+   for the user's name and displays the greeting correctly.
+-- g++ hello_world.cpp
+-- ./a.out
+
+10. `Delete the C++ program file`:
+    - Once done, remove the `hello_world.cpp` file 
+    using the `rm` command.
+-- rm hello_world.cpp
+
+11. `Remove the project directory`:
+    - Check if the directory is empty and remove it.
+-- rmdir cpp_programs
