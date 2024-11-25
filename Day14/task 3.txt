@@ -18,7 +18,7 @@ Write the following code inside greet.cpp:
 using namespace std;
 
 int main() {
-    string name;
+    char name[20];
     cout << "Enter your name: ";
     cin >> name;
     cout << "Hello, " << name << "! Welcome!" << endl;
@@ -51,7 +51,7 @@ Modify the code to include a farewell message:
 using namespace std;
 
 int main() {
-    string name;
+    char name[20];
     cout << "Enter your name: ";
     cin >> name;
     cout << "Hello, " << name << "! Welcome!" << endl;
