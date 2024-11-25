@@ -32,10 +32,10 @@ Press Ctrl + X to exit.
 
 5. Compile the program
 Used g++ to compile:
--- g++ greet.cpp -o greet
+-- g++ greet.cpp
 
 6. Run the executable
--- ./greet
+-- ./a.out
 
 7. Display the contents of the file:
 -- cat greet.cpp
@@ -66,10 +66,10 @@ Press Ctrl + X to exit.
 9. Compile and run the modified program 
 
 Compile the updated file:
-g++ greet.cpp -o greet
+g++ greet.cpp
 
 Run the executable again:
-./greet
+./a.out
 
 10. Remove the greet.cpp file
 
