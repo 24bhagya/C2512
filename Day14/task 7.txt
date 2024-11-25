@@ -47,6 +47,19 @@ output: Hello,World!
    Save and exit the file again.
 --vim hello_world.cpp
 
+--code:
+
+ #include <iostream>
+   using namespace std;
+
+   int main() {
+         char name[20];
+         cout << "Enter your Name:";
+         cin >> name;
+         cout << "Hello, " << name << endl;
+         return 0;
+   }
+
 9. `Compile and run the modified program`:
    - Recompile the program and run it to test if it asks 
    for the user's name and displays the greeting correctly.
