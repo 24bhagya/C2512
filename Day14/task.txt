@@ -38,6 +38,7 @@
    - Run the `hello_world` executable and confirm 
    that it prints "Hello, World!" to the console.
 --./a.out
+output: Hello,World!
 
 8. `Edit the program`:
    - Reopen the file using `vi` and modify the program 
@@ -51,6 +52,7 @@
    for the user's name and displays the greeting correctly.
 -- g++ hello_world.cpp
 -- ./a.out
+output:Hello,Bhagya!
 
 10. `Delete the C++ program file`:
     - Once done, remove the `hello_world.cpp` file 
