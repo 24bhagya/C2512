@@ -1,6 +1,6 @@
 -The Linux file system is the method and structure used by Linux operating systems to store, organize, 
-and manage data on storage devices like hard drives, SSDs, and USB drives. It provides a way to access, create,
-and manipulate files and directories efficiently.
+and manage data on storage devices like hard drives, SSDs, and USB drives. 
+-It provides a way to access, create,and manipulate files and directories efficiently.
 
 -Key Features of Linux File System:
 
