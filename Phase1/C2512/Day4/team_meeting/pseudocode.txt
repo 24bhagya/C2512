@@ -1,0 +1,220 @@
+Part 1:
+Read patients' ages (integer) from keyboard till we read less than zero by using array / collection."   -> done
+Find average age (integer),                                                                             -> done
+prime ages sum(example: 11, prime number age), 
+teenager ages sum, 
+minimum age, 
+odd ages sum (example: 51), and
+2nd maximum adult age.  
+Check minimum age is also prime age.
+Use coding standards and best practices to write pseudo code and c++ code.
+Plan the task codes to make as reusable functions.
+
+Part 2:
+Implement avg age and min age without using arrays.
+
+
+pseudo function:
+    function readAges(ages -> [int]) -> int                     ->Pitchumani        -> done
+    function findAvg(ages -> [int], size -> int) -> int         ->Pitchumani        -> done
+    function isPrime(age -> int) -> bool                        ->Josh
+    function findSumOfAge(ages -> [int], size -> int) -> int        ->Josh              -> done
+    function findSumOfPrime(ages -> [int], size -> int) -> int     ->Bhagya
+    function isTeenage(age -> int) -> bool                      ->Bhagya
+    function findSumOfTeenage(ages -> [int], size -> int)             ->Bhagya
+    function findMinAge(ages -> [int], size ->int) -> int           ->Nayana
+    function isOddAge(age -> int) -> bool                       ->Nayana
+    function findSecondMaxAdultAge(ages -> [int], size) -> int  ->Dhaheen
+    function sumOfOddAge(ages-> [int], size -> int) -> int      ->Josh
+
+    testFunction                                                ->Dhaheen
+
+______________________________________________Pitchumani____________________________________________________
+
+    #define MAX_SIZE 100
+
+    function readAges(ages-> [int]) -> int
+
+        int index = 0
+        int age;
+
+        print "Enter age"
+        input age
+
+        while(age > 0)
+            ages[index] = age
+            index = index + 1
+            input age
+
+        end while
+
+        return index
+ 
+
+    function findAvg(ages-> [int], size-> int) -> int
+
+        int avg = findSumOfAge(ages, size)  //review
+
+        return ((int) avg / 2)
+
+
+
+______________________________________________Josh____________________________________________________
+
+    function isPrime(age-> int) -> bool
+        if (age < 2)
+            return false
+        end if
+
+        int squareRoot = sqrt(age)
+
+        for i in (2..squareRoot)
+            if ((age % i) == 0)
+                return false
+            end if
+        end for
+        
+        return true
+
+    function findSumOfAge(ages-> [int], size-> int) -> int
+        int sum = 0
+
+        for i in (0..(size-1))
+            sum = sum + ages[i]
+        end for
+
+        return sum
+
+    function sumOfOddAge(ages-> [int], size -> int) -> int
+        int sum = 0
+
+        for i in (0..(size-1))
+            if (isOddAge(ages[i]))
+                sum = sum + ages[i]
+            end if
+        end for
+
+        return sum
+_____________________________________________Bhagya_____________________________________________________
+
+    function findSumOfPrime(ages-> [int], size-> int) -> int
+
+        int sum = 0
+
+        for i in (0..(size-1))
+            if (isPrime(ages[i]))
+                sum = sum + ages[i]
+            end if
+        end for
+
+        return sum
+
+
+    function isTeenage(age-> int) -> bool
+
+        if ((age >= 13) and (age <= 19))
+             true
+        else
+            return false
+        
+
+
+    function findSumOfTeenage(ages -> [int], size -> int)
+
+        int sum = 0
+
+        for i in (0..(size-1))
+            if (isTeenage(ages[i]))
+                sum = sum + ages[i]
+            end if
+        end for
+
+        return sum
+            
+
+______________________________________________Nayana____________________________________________________
+
+    function findMinAge(ages-> [int], size-> int) -> int
+        min = 0
+
+        for i in (0..(size-1))
+            if (ages[i] < min)
+                min = ages[i]
+            end if
+        end for 
+
+        return min    
+
+
+    function isOddAge(age-> int) -> bool
+        
+        if ((age % 2) == 0)          //review
+            return false
+        end if
+        return true
+        
+    
+    function sumOdd(ages-> [int], size-> int) -> int
+
+        int sum = 0
+
+        for i in (0..(size-1))
+            if (isOddAge(ages[i]))
+                sum = sum + ages[i]
+            end if
+        end for
+
+        return sum
+________________________________________________Dhaheen__________________________________________________
+
+    function findSecondMaxAdultAge(ages-> [int], size-> int) -> int
+        int firstMax = 0
+        int secondMax = 0
+
+        for i in (0..(size-1))
+            if (ages[i] >= 18 && ages[i] > firstMax)
+                firstMax = ages[i]
+            end if
+        end for
+        
+        for i in (0..(size-1))
+            if ((ages[i] >= 18) && (ages[i] > secondMax) && (ages[i] < firstMax))
+                secondMax = ages[i]
+            end if
+        end for	
+        
+        return secondMax
+
+    functionTest:
+
+    function testFunction()
+
+        /*                                  code segment commented below is implemented
+        int ages[MAX_SIZE]   
+        size = readAges()
+        averageAge = findAvg(ages, size)
+        print averageAge
+        */
+
+        primeAgeSum = findSumOfPrime(ages, size) 
+        teenSum = findSumOfTeenage(ages, size)
+        minimumAge = findMinAge(ages, size)
+        oddAgeSum = sumOfOddAge(ages, size)
+        secondMaxAdultAge = findSecondMaxAdultAge(ages, size)
+        
+        print averageAge
+        print primeAgeSum
+        print teenSum
+        print minimumAge
+        print oddAgeSum
+        if(isPrime(minimumAge))
+            print("minimum age is prime")
+        else
+            print("minimum age is not prime")
+
+
+__________________________________________C++________________________________________________________
+
+test11102024.cpp
+
+

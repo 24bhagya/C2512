@@ -1,0 +1,15 @@
+DEFINE function is_leap(year)
+    IF year is divisible by 400
+        RETURN "Leap year"
+    ELSE IF year is divisible by 100
+        RETURN "Not a leap year"
+    ELSE IF year is divisible by 4
+        RETURN "Leap year"
+    ELSE
+        RETURN "Not a leap year"
+
+DEFINE main
+    INPUT year
+    SET result = is_leap(year)
+    OUTPUT result
+
