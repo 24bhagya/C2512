@@ -1,0 +1,38 @@
+-- Booking table
+CREATE TABLE booking (
+    booking_id NUMBER PRIMARY KEY,
+    booking_number VARCHAR2(20) NOT NULL,
+    movie_name VARCHAR2(50) NOT NULL,
+    about_movie VARCHAR2(255),
+    number_of_tickets NUMBER NOT NULL,
+    tickets_amount NUMBER NOT NULL,
+    food_amount NUMBER NOT NULL,
+    ticket_plus_food_amount NUMBER NOT NULL,
+    payment_mode VARCHAR2(20),
+    customer_id NUMBER,
+    theatre_id NUMBER,
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+    FOREIGN KEY (theatre_id) REFERENCES theatre(theatre_id)
+);
+-- Booking_ticket table
+CREATE TABLE booking_ticket (
+    ticket_id NUMBER PRIMARY KEY,
+    seat_id NUMBER,
+    price NUMBER NOT NULL,
+    booking_id NUMBER,
+    FOREIGN KEY (seat_id) REFERENCES seat(seat_id),
+    FOREIGN KEY (booking_id) REFERENCES booking(booking_id)
+);
+
+-- Booking_food table
+CREATE TABLE booking_food (
+    item_id NUMBER,
+    booking_id NUMBER,
+    price NUMBER NOT NULL,
+    amount NUMBER NOT NULL,
+    PRIMARY KEY (item_id, booking_id),
+    FOREIGN KEY (item_id) REFERENCES food(item_id),
+    FOREIGN KEY (booking_id) REFERENCES booking(booking_id)
+);
+```
+
