@@ -1,0 +1,90 @@
+Part 2:
+Implement avg age and min age without using arrays.
+
+function avgAgeAndMinAge(numAge -> int) -> void
+    minAge = INT_MAX
+    totalAge = 0
+
+    print "Enter the ages:"
+    for i from 0 to (numAge - 1)
+        input age
+
+        // Update the running sum
+        totalAge = totalAge + age
+
+        // Update the minimum age
+        if age < minAge
+            minAge = age
+        end if
+    end for
+
+    avgAge = totalAge / numAge // Corrected variable name from 'n' to 'numAge'
+
+    print "Minimum Age: " minAge
+    print "Average Age: " avgAge
+
+function avgAgeAndMinAgeTest() -> void
+    print "Enter the number of people:"
+    input numAge
+
+    if numAge <= 0
+        print "Invalid number of people."
+        return
+    end if
+
+    call avgAgeAndMinAge(numAge)
+
+pseudo code:
+    avgAgeAndMinAgeTest()
+
+
+c++: 
+#include <iostream>
+#include <climits>
+using namespace std;
+
+// Function to calculate average age and minimum age
+void avgAgeAndMinAge(int numAge) {
+    int minAge = INT_MAX; // Initialize minimum age to a very large value
+    int totalAge = 0;     // Initialize total age sum
+
+    cout << "Enter the ages:" << endl;
+    for (int i = 0; i < numAge; i++) {
+        int age;
+        cin >> age;
+
+        // Update the running sum
+        totalAge += age;
+
+        // Update the minimum age
+        if (age < minAge) {
+            minAge = age;
+        }
+    }
+
+    // Calculate average age
+    double avgAge = static_cast<double>(totalAge) / numAge;
+
+    // Print the results
+    cout << "Minimum Age: " << minAge << endl;
+    cout << "Average Age: " << avgAge << endl;
+}
+
+// Function to test avgAgeAndMinAge
+void avgAgeAndMinAgeTest() {
+    cout << "Enter the number of people: ";
+    int numAge;
+    cin >> numAge;
+
+    if (numAge <= 0) {
+        cout << "Invalid number of people." << endl;
+        return;
+    }
+
+    avgAgeAndMinAge(numAge); // Call the function to calculate and display results
+}
+
+int main() {
+    avgAgeAndMinAgeTest(); // Entry point to test the functionality
+    return 0;
+}
