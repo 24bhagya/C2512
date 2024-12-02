@@ -3,7 +3,7 @@
 using namespace std;
 
 const int MAX_SURGERIES = 100;
-
+// *****surgery.h*****
 class Surgery {
     friend class SurgeryManager;
 private:
@@ -18,7 +18,7 @@ public:
     string GetSurgeryID();
     int GetDuration();
 };
-
+// *****SurgeryManager.h*****
 class SurgeryManager {
 private:
     Surgery surgeries[MAX_SURGERIES];
@@ -34,7 +34,7 @@ public:
 
     SurgeryManager();
 };
-
+//*****SurgeryAggregator.h*****
 class SurgeryAggregator {
 public:
     int findMin(SurgeryManager& manager);
@@ -42,7 +42,7 @@ public:
 };
 
 void printSurgeryMenu();
-
+// *****Main.cpp*****
 int main() {
     SurgeryManager manager;
     SurgeryAggregator aggregator;
@@ -83,7 +83,7 @@ int main() {
 
     return 0;
 }
-
+// *****SurgeryManager.cpp*****
 void SurgeryManager::create() {
     if (numSurgeries >= MAX_SURGERIES) {
         cout << "Error: Maximum surgery limit reached.\n";
