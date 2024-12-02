@@ -2,55 +2,60 @@
 #include <iomanip>
 using namespace std;
 
+// *****Const.h*****
+// Constants
 const int MAX_SURGERIES = 100;
-// *****surgery.h*****
+
+// *****Surgery.h*****
 class Surgery {
     friend class SurgeryManager;
-private:
-    string SurgeryID;
-    int Duration; // Duration in minutes
-
-public:
-    bool GreaterThan(const Surgery& other);
-    bool LessThan(const Surgery& other);
-
-    // Getters and Setters
-    string GetSurgeryID();
-    int GetDuration();
+    private:
+        string SurgeryID;
+        int Duration; // Duration in minutes
+    public:
+        bool GreaterThan(const Surgery& other);
+        bool LessThan(const Surgery& other);
+        // Getters and setters
+        string GetSurgeryID();
+        int GetDuration();
 };
+
 // *****SurgeryManager.h*****
 class SurgeryManager {
-private:
-    Surgery surgeries[MAX_SURGERIES];
-    int numSurgeries;
-
-public:
-    int findIndexById(string SurgeryID);
-
-    void create();
-    void displayAll();
-    void editById();
-    void deleteById();
-
-    SurgeryManager();
+    friend class SurgeryAggregator;
+    friend int main();
+    private:
+        Surgery surgeries[MAX_SURGERIES];
+        int numSurgeries;
+    public:
+        int findIndexById(string SurgeryID);
+        void create();
+        void displayAll();
+        void editById();
+        void deleteById();
+        SurgeryManager();
 };
-//*****SurgeryAggregator.h*****
+
+// *****SurgeryAggregator.h*****
 class SurgeryAggregator {
-public:
-    int findMin(SurgeryManager& manager);
-    int findMax(SurgeryManager& manager);
+    public:
+        int findMin(SurgeryManager& manager);
+        int findMax(SurgeryManager& manager);
+        int findSecondMin(SurgeryManager& manager);
+        int findSecondMax(SurgeryManager& manager);
 };
 
-void printSurgeryMenu();
+// *****Menu.h*****
+void printMenu();
+
 // *****Main.cpp*****
 int main() {
     SurgeryManager manager;
     SurgeryAggregator aggregator;
-
-    int choice;
+    int choice; // User's menu choice
 
     do {
-        printSurgeryMenu();
+        printMenu(); // Display menu
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -62,28 +67,56 @@ int main() {
             case 5:
                 cout << "Surgery with Min Duration: "
                      << manager.surgeries[aggregator.findMin(manager)].GetSurgeryID()
-                     << " with Duration: "
+                     << " with Duration "
                      << manager.surgeries[aggregator.findMin(manager)].GetDuration()
                      << " minutes\n";
                 break;
             case 6:
                 cout << "Surgery with Max Duration: "
                      << manager.surgeries[aggregator.findMax(manager)].GetSurgeryID()
-                     << " with Duration: "
+                     << " with Duration "
                      << manager.surgeries[aggregator.findMax(manager)].GetDuration()
                      << " minutes\n";
                 break;
             case 7:
+                cout << "Surgery with 2nd Min Duration: "
+                     << manager.surgeries[aggregator.findSecondMin(manager)].GetSurgeryID()
+                     << " with Duration "
+                     << manager.surgeries[aggregator.findSecondMin(manager)].GetDuration()
+                     << " minutes\n";
+                break;
+            case 8:
+                cout << "Surgery with 2nd Max Duration: "
+                     << manager.surgeries[aggregator.findSecondMax(manager)].GetSurgeryID()
+                     << " with Duration "
+                     << manager.surgeries[aggregator.findSecondMax(manager)].GetDuration()
+                     << " minutes\n";
+                break;
+            case 9:
                 cout << "Exiting the system. Goodbye!\n";
                 break;
             default:
-                cout << "Invalid choice. Please enter a number between 1 and 7.\n";
+                cout << "Invalid choice. Please enter a number between 1 and 9.\n";
         }
-    } while (choice != 7);
+    } while (choice != 9);
 
     return 0;
 }
+
 // *****SurgeryManager.cpp*****
+SurgeryManager::SurgeryManager() {
+    numSurgeries = 0;
+}
+
+int SurgeryManager::findIndexById(string SurgeryID) {
+    for (int i = 0; i < numSurgeries; i++) {
+        if (surgeries[i].SurgeryID == SurgeryID) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 void SurgeryManager::create() {
     if (numSurgeries >= MAX_SURGERIES) {
         cout << "Error: Maximum surgery limit reached.\n";
@@ -127,15 +160,6 @@ void SurgeryManager::displayAll() {
     cout << "-----------------------------------------\n";
 }
 
-int SurgeryManager::findIndexById(string SurgeryID) {
-    for (int i = 0; i < numSurgeries; i++) {
-        if (surgeries[i].SurgeryID == SurgeryID) {
-            return i;
-        }
-    }
-    return -1;
-}
-
 void SurgeryManager::editById() {
     string SurgeryID;
     cout << "Enter Surgery ID to edit: ";
@@ -173,11 +197,21 @@ void SurgeryManager::deleteById() {
 
     cout << "Surgery deleted successfully.\n";
 }
-
-SurgeryManager::SurgeryManager() {
-    numSurgeries = 0;
+// *****Menu.cpp*****
+void printMenu() {
+    cout << "\n=== Surgery Management System ===\n";
+    cout << "1. Create Surgery\n";
+    cout << "2. Display All Surgeries\n";
+    cout << "3. Edit Surgery\n";
+    cout << "4. Delete Surgery\n";
+    cout << "5. Find Min Duration Surgery\n";
+    cout << "6. Find Max Duration Surgery\n";
+    cout << "7. Find Second Min Duration Surgery\n";
+    cout << "8. Find Second Max Duration Surgery\n";
+    cout << "9. Exit\n";
 }
 
+// *****Surgery.cpp*****
 bool Surgery::GreaterThan(const Surgery& other) {
     return (Duration > other.Duration);
 }
@@ -194,13 +228,11 @@ int Surgery::GetDuration() {
     return Duration;
 }
 
+// *****SurgeryAggregator.cpp*****
 int SurgeryAggregator::findMin(SurgeryManager& manager) {
-    Surgery* arr = manager.surgeries;
-    int& n = manager.numSurgeries;
     int minIndex = 0;
-
-    for (int i = 1; i < n; ++i) {
-        if (arr[i].LessThan(arr[minIndex])) {
+    for (int i = 1; i < manager.numSurgeries; i++) {
+        if (manager.surgeries[i].LessThan(manager.surgeries[minIndex])) {
             minIndex = i;
         }
     }
@@ -208,25 +240,37 @@ int SurgeryAggregator::findMin(SurgeryManager& manager) {
 }
 
 int SurgeryAggregator::findMax(SurgeryManager& manager) {
-    Surgery* arr = manager.surgeries;
-    int& n = manager.numSurgeries;
     int maxIndex = 0;
-
-    for (int i = 1; i < n; ++i) {
-        if (arr[i].GreaterThan(arr[maxIndex])) {
+    for (int i = 1; i < manager.numSurgeries; i++) {
+        if (manager.surgeries[i].GreaterThan(manager.surgeries[maxIndex])) {
             maxIndex = i;
         }
     }
     return maxIndex;
 }
 
-void printSurgeryMenu() {
-    cout << "\n=== Surgery Management System ===\n";
-    cout << "1. Add Surgery\n";
-    cout << "2. Display All Surgeries\n";
-    cout << "3. Edit Surgery by ID\n";
-    cout << "4. Delete Surgery by ID\n";
-    cout << "5. Find Surgery with Minimum Duration\n";
-    cout << "6. Find Surgery with Maximum Duration\n";
-    cout << "7. Exit\n";
+int SurgeryAggregator::findSecondMin(SurgeryManager& manager) {
+    int minIndex = findMin(manager);
+    int secondMinIndex = (minIndex == 0) ? 1 : 0;
+
+    for (int i = 0; i < manager.numSurgeries; i++) {
+        if (i != minIndex && manager.surgeries[i].LessThan(manager.surgeries[secondMinIndex])) {
+            secondMinIndex = i;
+        }
+    }
+    return secondMinIndex;
 }
+
+int SurgeryAggregator::findSecondMax(SurgeryManager& manager) {
+    int maxIndex = findMax(manager);
+    int secondMaxIndex = (maxIndex == 0) ? 1 : 0;
+
+    for (int i = 0; i < manager.numSurgeries; i++) {
+        if (i != maxIndex && manager.surgeries[i].GreaterThan(manager.surgeries[secondMaxIndex])) {
+            secondMaxIndex = i;
+        }
+    }
+    return secondMaxIndex;
+}
+
+
