@@ -11,7 +11,7 @@ Task:
 
 4. Write the C++ program
 Open the file using nano:
-nano greet.cpp
+---nano greet.cpp
 Write the following code inside greet.cpp:
 
 #include <iostream>
@@ -26,9 +26,9 @@ int main() {
 }
 
 To save the file in nano:
-Press Ctrl + O to save.
+--Press Ctrl + O to save.
 Press Enter to confirm the filename.
-Press Ctrl + X to exit.
+---Press Ctrl + X to exit.
 
 5. Compile the program
 Used g++ to compile:
@@ -43,7 +43,7 @@ Used g++ to compile:
 8. Modify the file
 
 Open greet.cpp again with nano:
-nano greet.cpp
+---nano greet.cpp
 
 Modify the code to include a farewell message:
 
@@ -60,16 +60,16 @@ int main() {
 }
 Save and exit:
 
-Press Ctrl + O, Enter to save.
-Press Ctrl + X to exit.
+---Press Ctrl + O, Enter to save.
+----Press Ctrl + X to exit.
 
 9. Compile and run the modified program 
 
 Compile the updated file:
-g++ greet.cpp
+---g++ greet.cpp
 
 Run the executable again:
-./a.out
+-- ./a.out
 
 10. Remove the greet.cpp file
 
