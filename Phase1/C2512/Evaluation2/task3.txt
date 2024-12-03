@@ -1,0 +1,101 @@
+Problem Statement:
+
+   -  The task is to create, compile, and execute a simple C++ program that interacts with the user. 
+   - Initially, the program takes a user's name as input and greets them with a welcome message. 
+   - The program is later modified to also include a farewell message.
+   - finally,to remove the file and also to remove the directory.
+
+What is the nano editor?
+
+  - The nano editor is a simple, command-line-based text editor commonly used on Linux systems. 
+  - It is beginner-friendly and ideal for quickly editing text files, programming scripts, or configuration files directly from the terminal. 
+  - Unlike other editors such as vim, nano has a straightforward interface with on-screen shortcuts for saving, exiting, and navigating.
+  - Comes pre-installed on most Linux distributions.
+
+
+STEPS  :
+
+1. Create a new directory
+   -- mkdir my_cpp_project
+
+2. Change into the directory 
+   -- cd my_cpp_project
+
+3. Create a C++ file
+   -- touch greet.cpp
+
+4. Write the C++ program
+Open the file using nano:
+   ---nano greet.cpp
+
+Write the following code inside greet.cpp:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    char name[20];
+    cout << "Enter your name: ";
+    cin >> name;
+    cout << "Hello, " << name << "! Welcome!" << endl;
+    return 0;
+}
+
+To save the file in nano:
+   --Press Ctrl + O to save.
+Press Enter to confirm the filename.
+   ---Press Ctrl + X to exit.
+
+5. Compile the program
+Used g++ to compile:
+   -- g++ greet.cpp
+
+6. Run the executable
+   -- ./a.out
+
+7. Display the contents of the file:
+   -- cat greet.cpp
+
+8. Modify the file
+
+Open greet.cpp again with nano:
+   ---nano greet.cpp
+
+Modify the code to include a farewell message:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    char name[20];
+    cout << "Enter your name: ";
+    cin >> name;
+    cout << "Hello, " << name << "! Welcome!" << endl;
+    cout << "Goodbye, " << name << "! Have a great day!" << endl;
+    return 0;
+}
+
+Save and exit:
+
+   ---Press Ctrl + O, Enter to save.
+   ----Press Ctrl + X to exit.
+
+9. Compile and run the modified program 
+
+Compile the updated file:
+   ---g++ greet.cpp
+
+Run the executable again:
+   -- ./a.out
+
+10. Remove the greet.cpp file
+
+   -- rm greet.cpp
+
+11. Check and remove the directory if it’s empty
+
+List the directory contents:
+   --  ls
+If the directory is empty, remove it:
+   -- cd ..
+   -- rmdir my_cpp_project
