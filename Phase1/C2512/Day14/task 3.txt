@@ -3,6 +3,7 @@ Problem Statement:
    -  The task is to create, compile, and execute a simple C++ program that interacts with the user. 
    - Initially, the program takes a user's name as input and greets them with a welcome message. 
    - The program is later modified to also include a farewell message.
+   - finally,to remove the file and also to remove the directory.
 
 What is the nano editor?
 
