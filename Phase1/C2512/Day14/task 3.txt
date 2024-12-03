@@ -5,6 +5,7 @@ Problem Statement:
    - The program is later modified to also include a farewell message.
 
 What is the nano editor?
+
   - The nano editor is a simple, command-line-based text editor commonly used on Linux systems. 
   - It is beginner-friendly and ideal for quickly editing text files, programming scripts, or configuration files directly from the terminal. 
   - Unlike other editors such as vim, nano has a straightforward interface with on-screen shortcuts for saving, exiting, and navigating.
