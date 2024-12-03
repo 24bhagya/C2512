@@ -15,17 +15,18 @@ What is the nano editor?
 STEPS  :
 
 1. Create a new directory
--- mkdir my_cpp_project
+   -- mkdir my_cpp_project
 
 2. Change into the directory 
--- cd my_cpp_project
+   -- cd my_cpp_project
 
 3. Create a C++ file
--- touch greet.cpp
+   -- touch greet.cpp
 
 4. Write the C++ program
 Open the file using nano:
----nano greet.cpp
+   ---nano greet.cpp
+
 Write the following code inside greet.cpp:
 
 #include <iostream>
@@ -40,24 +41,24 @@ int main() {
 }
 
 To save the file in nano:
---Press Ctrl + O to save.
+   --Press Ctrl + O to save.
 Press Enter to confirm the filename.
----Press Ctrl + X to exit.
+   ---Press Ctrl + X to exit.
 
 5. Compile the program
 Used g++ to compile:
--- g++ greet.cpp
+   -- g++ greet.cpp
 
 6. Run the executable
--- ./a.out
+   -- ./a.out
 
 7. Display the contents of the file:
--- cat greet.cpp
+   -- cat greet.cpp
 
 8. Modify the file
 
 Open greet.cpp again with nano:
----nano greet.cpp
+   ---nano greet.cpp
 
 Modify the code to include a farewell message:
 
@@ -72,27 +73,28 @@ int main() {
     cout << "Goodbye, " << name << "! Have a great day!" << endl;
     return 0;
 }
+
 Save and exit:
 
----Press Ctrl + O, Enter to save.
-----Press Ctrl + X to exit.
+   ---Press Ctrl + O, Enter to save.
+   ----Press Ctrl + X to exit.
 
 9. Compile and run the modified program 
 
 Compile the updated file:
----g++ greet.cpp
+   ---g++ greet.cpp
 
 Run the executable again:
--- ./a.out
+   -- ./a.out
 
 10. Remove the greet.cpp file
 
--- rm greet.cpp
+   -- rm greet.cpp
 
 11. Check and remove the directory if it’s empty
 
 List the directory contents:
---  ls
+   --  ls
 If the directory is empty, remove it:
--- cd ..
--- rmdir my_cpp_project
+   -- cd ..
+   -- rmdir my_cpp_project
