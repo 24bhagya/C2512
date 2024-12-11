@@ -1063,4 +1063,7 @@ int main() {
 - This program uses **bubble sort** to sort an array. It compares adjacent elements and swaps them if they are in the wrong order.
 
 ---
+39.What is a Smart Pointer in C++?
+A smart pointer is an object that acts as a wrapper around a raw pointer, providing automatic memory management. It ensures that dynamically allocated memory is correctly freed when no longer needed, which helps prevent memory leaks and dangling pointers.
+
 
