@@ -60,11 +60,11 @@ public:
         delete electric;
     }
 
-    void play() const override {
+    void play()  override {
         cout << "Playing guitar with " << *stringCount << " strings and made of " << material << endl;
     }
 
-    void tune() const override {
+    void tune()  override {
         cout << "Tuning the guitar made of " << material << " with " << *stringCount << " strings." << endl;
     }
 };
