@@ -163,9 +163,7 @@ Over time, as the program continues to run, these leaks accumulate and may event
 4. Object Code + Libraries → (Linker) → Executable
 5. Executable → (Loader) → Running Program
 
-Here's the updated version of your provided content with the questions highlighted:
 
----
 
 **11. Find a particular word in a string and replace it with another word.**
 
