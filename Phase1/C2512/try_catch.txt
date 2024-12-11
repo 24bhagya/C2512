@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+
+void divide (int a , int b)
+{
+    if((b==0)||(b==1))
+            throw "division by zero or one is not allowed";
+    cout << "result: " << (a/b) << endl;
+    
+}
+int main()
+{
+    int x = 20 , y = 1;
+    
+    try {
+        divide(x,y);
+    }
+    catch (const char* e )
+    {
+        cout << "error : "<< e << endl;
+    }
+    
+    return 0;
+}
