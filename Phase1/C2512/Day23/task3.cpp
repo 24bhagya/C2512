@@ -34,8 +34,8 @@ public:
         delete[] material;
     }
 
-    virtual void play() const = 0;  // Pure virtual method
-    virtual void tune() const = 0;  // Pure virtual method
+    virtual void play()  = 0;  // Pure virtual method
+    virtual void tune()  = 0;  // Pure virtual method
 };
 
 // Derived Class : Guitar
