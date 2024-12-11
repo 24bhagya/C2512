@@ -1,6 +1,4 @@
-Here’s the updated version with only the questions highlighted for better readability:
 
----
 
 **1. What is a virtual function and pure virtual function?**
 
