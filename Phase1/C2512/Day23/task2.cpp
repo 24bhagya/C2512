@@ -1,3 +1,10 @@
+//single inheritance using static binding:
+=============================================================
+//Create two static objects for Both Base and Derived class and call all behaviour 
+//one two dynamic objects for Base and Derived class 
+//and call all behaviours
+
+//Define constructors and destructors for all the classes 
 //Example 9: `Gaming System`
 //`Base Class:` Character `{field: health, behavior: move()}`
 //- `Derived Class:` Warrior `{field: weaponType, behavior: attack()}`
