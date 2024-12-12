@@ -1064,6 +1064,8 @@ int main() {
 
 ---
 39.What is a Smart Pointer in C++?
-A smart pointer is an object that acts as a wrapper around a raw pointer, providing automatic memory management. It ensures that dynamically allocated memory is correctly freed when no longer needed, which helps prevent memory leaks and dangling pointers.
+
+A smart pointer is an object that acts as a wrapper around a raw pointer, providing automatic memory management. 
+It ensures that dynamically allocated memory is correctly freed when no longer needed, which helps prevent memory leaks and dangling pointers.
 
 
