@@ -1,98 +1,190 @@
-// //1.4 
-//     // replace dynamic fields as smart pointers 
-//     // prove that Employee virtual destructor is not needed.
-//     // create the dynamic programmer object assigned to employee smart pointer
+/*
+// Coding Question: 1.1
+    Employee {id, age, name} //id, age, name are value objects
+    Employee e1(101,22,"Athira"),e2(102,23,"Bhagya");
+    cout << e1 << endl; //101 22 Athira
+    cout << e2 << endl; //102 23 Bhagya
+    e1.swap(e2);
+    cout << e1 << endl; //102 23 Bhagya
+    cout << e2 << endl; //101 22 Athira
+    //1.2 "id, age, name" as dynamic memory using new and delete
+    //1.3 Programmer { string* tasks; int taskCount; } : Employee | tasks is the multiple tasks - array of task
+        swap function overloadable
+        here, create the dynamic programmer object assigned to employee pointer.
+        field 'tasks' is dynamic memoery.
+        operator << overloadable, swap is overridden.
+    //1.4 replace dynamic fields as smart pointers
+        prove that Employee virtual destructor is not needed.
+        create the dynamic programmer object assigned to employee smart pointer
+    //1.5 construct array of N programmers. read programmers from keyboard.
+        cin >> var; // overload operator>> in employee and programmer
+*/
 
 #include <iostream>
-#include <algorithm>
 #include <string>
-#include <memory>  
-#include <vector>  
+#include <memory>
+#include <cstring>
+
 using namespace std;
 
-class Employee {
-public:
-    unique_ptr<int> id;      
-    unique_ptr<int> age;    
-    unique_ptr<string> name; 
+class Employee
+{
+private:
+    unique_ptr<int> id;
+    unique_ptr<int> age;
+    unique_ptr<char[]> name;
 
 public:
-    Employee(int v_id, int v_age, string v_name)
-        : id(make_unique<int>(v_id)), age(make_unique<int>(v_age)), name(make_unique<string>(v_name)) {}
-
-    virtual void printDetails()  {
-        cout << *id << " " << *age << " " << *name;
-    }
-
-    virtual void swap(Employee& other) {
-        std::swap(id, other.id);
-        std::swap(age, other.age);
-        std::swap(name, other.name);
-    }
-
-    friend ostream& operator<<(ostream& os,  Employee& e);
+    Employee(int id, int age, const char *name);
+    Employee(Employee &&other) noexcept;
+    Employee &operator=(Employee &&other) noexcept;
+    virtual ~Employee() = default;
+    virtual void swp(Employee &other);
+    friend ostream &operator<<(ostream &out, const Employee &employee);
 };
 
-class Programmer : public Employee {
+Employee::Employee(int id, int age, const char *name)
+{
+    this->id = make_unique<int>(id);
+    this->age = make_unique<int>(age);
+    this->name = make_unique<char[]>(strlen(name) + 1);
+    strcpy(this->name.get(), name);
+}
+
+Employee::Employee(Employee &&other) noexcept
+    : id(move(other.id)), age(move(other.age)), name(move(other.name))
+{
+}
+
+Employee &Employee::operator=(Employee &&other) noexcept
+{
+    if (this != &other)
+    {
+        id = move(other.id);
+        age = move(other.age);
+        name = move(other.name);
+    }
+    return *this;
+}
+
+void Employee::swp(Employee &other)
+{
+    Employee temp(move(*this));
+    *this = move(other);
+    other = move(temp);
+}
+
+ostream &operator<<(ostream &out, const Employee &employee)
+{
+    out << "ID: " << *(employee.id) << ", Name: " << employee.name.get() << ", Age: " << *(employee.age);
+    return out;
+}
+
+// Programmer class
+class Programmer : public Employee
+{
+private:
+    unique_ptr<string[]> tasks;
+    unique_ptr<int> taskCount;
+
 public:
-    unique_ptr<string[]> tasks;  
-    unique_ptr<int>taskCount;  
-
-public:
-    Programmer(int v_id, int v_age, string v_name, string* v_tasks, int v_taskCount)
-        : Employee(v_id, v_age, v_name), taskCount(make_unique<int>(v_taskCount)) {
-        tasks = make_unique<string[]>(*taskCount);
-        for (int i = 0; i < *taskCount; ++i) {
-            tasks[i] = v_tasks[i]; 
-        }
-    }
-
-    void swap(Programmer& other) {
-        std::swap(tasks, other.tasks);
-        std::swap(taskCount, other.taskCount);
-        
-        Employee::swap(other);
-    }
-
-    void printDetails() override {
-        Employee::printDetails();
-        cout << " Tasks: ";
-        for (int i = 0; i < *taskCount; ++i) {
-            cout << tasks[i] << " ";
-        }
-    }
-
-    friend ostream& operator<<(ostream& os,  Programmer& p);
+    Programmer(int v_id, int v_age, const char *v_name, string *v_tasks, int v_taskCount);
+    Programmer(Programmer &&other) noexcept;
+    Programmer &operator=(Programmer &&other) noexcept;
+    ~Programmer() = default;
+    void swp(Employee &other) override;
+    friend ostream &operator<<(ostream &out, const Programmer &programmer);
 };
 
-ostream& operator<<(ostream& os,  Employee& e) {
-    e.printDetails();
-    return os; 
+Programmer::Programmer(int v_id, int v_age, const char *v_name, string *v_tasks, int v_taskCount)
+    : Employee(v_id, v_age, v_name)
+{
+    taskCount = make_unique<int>(v_taskCount);
+    tasks = make_unique<string[]>(v_taskCount);
+    for (int i = 0; i < v_taskCount; i++)
+    {
+        tasks[i] = v_tasks[i];
+    }
 }
 
-ostream& operator<<(ostream& os, Programmer& p) {
-    p.printDetails();
-    return os;  
+Programmer::Programmer(Programmer &&other) noexcept
+    : Employee(move(other)), tasks(move(other.tasks)), taskCount(move(other.taskCount))
+{
 }
 
-int main() {
-    // Create task array for Programmer 1
-    string tasks1[] = {"Task1", "Task2", "Task3"};
+Programmer &Programmer::operator=(Programmer &&other) noexcept
+{
+    if (this != &other)
+    {
+        Employee::operator=(move(other));
+        tasks = move(other.tasks);
+        taskCount = move(other.taskCount);
+    }
+    return *this;
+}
+
+void Programmer::swp(Employee &other)
+{
+    if (Programmer *pOther = dynamic_cast<Programmer *>(&other))
+    {
+        Programmer temp(move(*this));
+        *this = move(*pOther);
+        *pOther = move(temp);
+    }
+    else
+    {
+        throw runtime_error("Incompatible types for swapping.");
+    }
+}
+
+ostream &operator<<(ostream &out, const Programmer &programmer)
+{
+    out << static_cast<const Employee &>(programmer);
+    out << ", Task Count: " << *(programmer.taskCount) << ", Tasks: [";
+    for (int i = 0; i < *(programmer.taskCount); i++)
+    {
+        out << programmer.tasks[i];
+        if (i < *(programmer.taskCount) - 1)
+            out << ", ";
+    }
+    out << "]";
+    return out;
+}
+
+// Test the code
+int main()
+{
+    string tasks1[] = {"Code", "Debug", "Test"};
     unique_ptr<Employee> p1 = make_unique<Programmer>(101, 22, "Athira", tasks1, 3);
 
-    // Create task array for Programmer 2
-    string tasks2[] = {"TaskA", "TaskB", "TaskC"};
-    unique_ptr<Employee> p2 = make_unique<Programmer>(102, 23, "Bhagya", tasks2, 3);
+    string tasks2[] = {"Design", "Implement"};
+    unique_ptr<Employee> p2 = make_unique<Programmer>(102, 23, "Bhagya", tasks2, 2);
 
-    cout << "p1: " << *p1 << endl;  
-    cout << "p2: " << *p2 << endl;  
+    // cout << "Before Swap:" << endl;
+    // cout << *p1 << endl;
+    // cout << *p2 << endl;
 
-    p1->swap(*p2); 
+    Programmer *e1 = dynamic_cast<Programmer *>(p1.get());
+    Programmer *e2 = dynamic_cast<Programmer *>(p2.get());
 
-    cout << "after swap" << endl;
-    cout << "p1: " << *p1 << endl;  
-    cout << "p2: " << *p2 << endl;  
+    cout << "Before Swap:" << endl;
+    cout << *e1 << endl;
+    cout << *e2 << endl;
 
+    try
+    {
+        p1->swp(*p2);
+    }
+    catch (const runtime_error &e)
+    {
+        cerr << "Error: " << e.what() << endl;
+    }
+
+    cout << "\nAfter Swap:" << endl;
+    // cout << *p1 << endl;
+    // cout << *p2 << endl;
+    cout << *e1 << endl;
+    cout << *e2 << endl;
 
     return 0;
 }
